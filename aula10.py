@@ -1,67 +1,76 @@
-#DEIXO DESDE AQUI CLARO, SÃO EXEMPLOS BASICOS DE EXERCICIOS COM IF E ELSE
-#aula, basico de if e else
+# DEIXO DESDE AQUI CLARO, SÃO EXEMPLOS BASICOS DE EXERCICIOS COM IF E ELSE
+# aula, basico de if e else
+#agora com cores
+cores = {'limpar':'\033[m',
+         'nvermelho':'\033[1;31m',
+         'nverde':'\033[1;32m',
+         'namarelo':'\033[1;33m'}
 
-nome = input('Digite seu nome:')
+
+nome = input('Digite seu nome:'.lower())
 if nome == 'gustavo':
-    pass
-print('uau')
-print('Bom dia' ,nome)
+   print('{}{}{}'.format(cores['nverde'],'uau', cores['limpar']))
+
+print('Bom dia', cores['nverde'],nome, cores['limpar'])
 
 # desafios
 
-#n1, jogo basico de adivinhaçao com if e else
+# n1, jogo basico de adivinhaçao com if e else
 import random
-num = random.randint(0,5)
+
+num = random.randint(0, 5)
 tentativa = int(input('tente adivinhar o numero! '))
 if tentativa == num:
-    print('você acertou!')
+    print(cores['nverde'],'você acertou!')
 else:
-    print('você errou')
+    print(cores['nvermelho'],'você errou')
+print('o numero era {}{}{}'.format(cores['namarelo'],num,cores['limpar']))
 
-print('o numero era {}'.format(num))
-
-#n2, aplica multa se a velocidade é muito alta
+# n2, aplica multa se a velocidade é muito alta
 vel = int(input('digite sua velocidade:'))
 if vel > 80:
     print('O lilite de velocidade é 80km/h')
-    print(f'sua multa é R${(vel - 80)*7} vai com calma')
+    print(cores['nvermelho'],f'sua multa é R${(vel - 80) * 7} vai com calma',
+          cores['limpar'])
 else:
-    print('tenha um bom dia!')
+    print(cores['nverde'],'tenha um bom dia!',
+          cores['limpar'])
 
-#n3, verifica se é par ou impar
+# n3, verifica se é par ou impar
 num = int(input('digite um numero:'))
 if num % 2 == 0:
-    print('par')
+    print(cores['nverde'],'o numero é par',cores['limpar'])
 else:
-    print('impar')
-    
-#n4, calcula custo da viagem dependendo da distancia
+    print(cores['nvermelho'],'o numero é impar',cores['limpar'])
+
+# n4, calcula custo da viagem dependendo da distancia
 viagem = int(input('digite a distanncia da viagem:'))
 if viagem <= 200:
-    print('a viagem vai custar R${:.2f}'.format(viagem * 0.50))
+    print('a viagem vai custar {}R${:.2f}{}'.format(cores['nvermelho'],
+                                                    (viagem * 0.50),
+                                                    cores['limpar']))
 else:
-    print('a viagem vai custar {:.2f}'.format(viagem * 0.45))
+    print('a viagem vai custar {}{:.2f}{}'.format(cores['nverde'],
+                                           viagem * 0.45,
+                                           cores['limpar']))
 
-
-#n5, ve se um ano é bissexto
+# n5, ve se um ano é bissexto
 import datetime
+cores = {'namarelo':'\033[m',}
 ano_atual = datetime.date.today().year
 ano = int(input('digite o ano ou 0 para ano atual:'))
+cores = {'limpar'}
 if ano % 4 == 0 and ano != 0 and ano % 100 != 0 or ano % 400 == 0:
     print('{} é bissexto'.format(ano))
 elif ano == 0:
-    if ano_atual %4 == 0:
+    if ano_atual % 4 == 0:
         print('{} é bisssexto'.format(ano_atual))
     else:
         print('{} não é bissexto'.format(ano_atual))
 else:
     print('{} nao é bissexto'.format(ano))
 
-#n6, pega 3 numeros e ve qual é maior e qul é menor
-
-n1 = int(input('digite o primeiro numero:'))
-n2 = int(input('digite o segundo numero:'))
-n3 = int(input('digite o terceiro numero:'))
+# n6, pega 3 numeros e ve qual é maior e qul é menor
 
 if n1 > n2 and n1 > n3:
     print('{} é o maior'.format(n1))
@@ -77,8 +86,7 @@ if n2 < n1 and n2 < n3:
 if n3 < n1 and n3 < n2:
     print('{} é o menor'.format(n3))
 
-
-#n7, da aumento de salario dependo quanto ganha
+# n7, da aumento de salario dependo quanto ganha
 
 sal = float(input('digite o salario:'))
 if sal <= 1250:
@@ -87,7 +95,7 @@ else:
     sal = sal * 0.10 + sal
 print('seu novo salario é R${:.2f}'.format(sal))
 
-#n8, ve se é possivel formar um triangulo com tais retas
+# n8, ve se é possivel formar um triangulo com tais retas
 
 s1 = int(input('tamanho do primeiro segmento:'))
 s2 = int(input('tamanho do segundo segmento:'))
@@ -101,12 +109,12 @@ else:
 '''
 #fim dos exercicios/desafios
 '''
-#exemplo de exercicio com if
+# exemplo de exercicio com if
 while True:
-    
+
     try:
         idade = int(input('digite sua idade:'))
-        if idade <0:
+        if idade < 0:
             print('essa nao é uma idade valida')
             continue
         elif idade <= 12:
@@ -120,4 +128,3 @@ while True:
         break
     except ValueError:
         print('digite apenas numeros')
-
